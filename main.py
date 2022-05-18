@@ -24,15 +24,33 @@ mailjet = Client(auth=(os.environ['MAILJET_API_KEY'], os.environ['MAILJET_API_SE
 first_run = True
 
 def dwelling_exists(dwelling_id):
+  found_daft = False
+  found_myHome = False
+
   sql = "SELECT * FROM links WHERE daft_id = %s"
   values = (dwelling_id, )
   cursor.execute(sql, values)
-  result = cursor.fetchall()
-  if result:
-    for x in result:
-      print('Dwelling found in DB: ', x)
-    return(True)
-  return False
+  result_daft = cursor.fetchall()
+  
+  sql = "SELECT * FROM links WHERE myhome_id = %s"
+  values = (dwelling_id, )
+  cursor.execute(sql, values)
+  result_myhome = cursor.fetchall()
+
+  if result_daft:
+    for x in result_daft:
+      print('Dwelling found in DB (DAFT): ', x)
+    found_daft = True
+  
+  if result_myhome:
+    for x in result_myhome:
+      print('Dwelling found in DB (MYHOME): ', x)
+    found_myHome = True
+  
+  if not found_daft and not found_myHome:
+    return False
+  else:
+    return True
 
 def add_new_dwelling(dwelling_id, title, url):
   if 'daft.ie' in url:
