@@ -58,7 +58,7 @@ def notify(dwelling_id, title, url):
             'Name': os.environ['NAME']
           }
         ],
-        'Subject': 'New dwelling - ' + dwelling_id,
+        'Subject': 'New dwelling - ' + str(dwelling_id),
         'HTMLPart': '<h3>New dwelling for rent</h3>' +
                     '<p>Title: ' + title + '</p>' +
                     '<p>Link: <a href=' + url + '>' + url + '</a></p>',

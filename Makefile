@@ -1,6 +1,10 @@
-run:
+dev:
 	docker-compose down
 	docker system prune
+	docker build -t dwellings:latest .
+	docker-compose up --force-recreate
+
+run:
 	docker build -t dwellings:latest .
 	docker-compose up --force-recreate
 
