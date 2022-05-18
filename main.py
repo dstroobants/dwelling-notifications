@@ -59,7 +59,7 @@ def notify(dwelling_id, title, url):
           }
         ],
         'Subject': 'New dwelling - ' + dwelling_id,
-        'HTMLPart': '<h3>New dwelling_id for rent</h3>' +
+        'HTMLPart': '<h3>New dwelling for rent</h3>' +
                     '<p>Title: ' + title + '</p>' +
                     '<p>Link: <a href=' + url + '>' + url + '</a></p>',
         'CustomID': dwelling_id
@@ -72,6 +72,7 @@ def notify(dwelling_id, title, url):
 while True:
   # Links for each daft dwellings are formatted like this:
   # "seoFriendlyPath":"/for-rent/from-here-student-living-cork-street-cork-street-dublin-8/2292148"
+  #
   # Links for each MyHome dwellings are formatted like this:
   # <a class="PropertyListingCard__Address ng-tns-c206-49" 
   #   href="/rentals/brochure/fortal-villafortlawns-scalpwilliam-dalkey-co-dublin/4594117"> 
@@ -106,12 +107,12 @@ while True:
 
       if not dwelling_exists(dwelling_id):
         add_new_dwelling(dwelling_id, title, url)
-        #if first_run == False:
-          #notify(dwelling_id, title, url)
+        if first_run == False:
+          notify(dwelling_id, title, url)
 
-#  if first_run == True:
-#    first_run = False
-#    print('\nFirst Run, no notification email sent.')
+  if first_run == True:
+    first_run = False
+    print('\nFirst Run, no notification email sent.')
 
   print('\nNext Search in 1 min.')
   time.sleep(60)
