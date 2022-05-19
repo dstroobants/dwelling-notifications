@@ -7,8 +7,10 @@ Example:
 ```
 MAILJET_API_KEY=1234567890abcdefghijklmno
 MAILJET_API_SECRET=1234567890abcdefghijklmno
-EMAIL=youremail@gmail.com
-NAME=yourname
+EMAIL_SENDER=youremail@gmail.com
+NAME_SENDER=yourname
+EMAIL_RECIPIENT=destinationemail@gmail.com
+NAME_RECIPIENT=destinationname
 SEARCH_URLS=['https://dogs.ie/dogs/golden-retriever/?filter=yes&breed=18&gender=&county=all&sort=','https://dogs.ie/dogs/cocker-spaniel/?filter=yes&breed=11&gender=&county=all&sort=']
 ```
 2. Run `make run`

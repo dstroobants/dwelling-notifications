@@ -67,13 +67,13 @@ def notify(dwelling_id, title, url):
     'Messages': [
       {
         'From': {
-          'Email': os.environ['EMAIL'],
-          'Name': os.environ['NAME']
+          'Email': os.environ['EMAIL_SENDER'],
+          'Name': os.environ['']
         },
         'To': [
           {
-            'Email': os.environ['EMAIL'],
-            'Name': os.environ['NAME']
+            'Email': os.environ['EMAIL_RECIPIENT'],
+            'Name': os.environ['NAME_RECIPIENT']
           }
         ],
         'Subject': 'New dwelling - ' + str(dwelling_id),
