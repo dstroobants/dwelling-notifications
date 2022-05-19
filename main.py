@@ -39,12 +39,12 @@ def dwelling_exists(dwelling_id):
 
   if result_daft:
     for x in result_daft:
-      print('Dwelling found in DB (DAFT): ', x)
+      print('Dwelling found in DB (DAFT). DB ID: {} - Daft ID: {}'.format(x[0], x[1]))
     found_daft = True
   
   if result_myhome:
     for x in result_myhome:
-      print('Dwelling found in DB (MYHOME): ', x)
+      print('Dwelling found in DB (MYHOME): DB ID: {} - MyHome ID: {}'.format(x[0], x[2]))
     found_myHome = True
   
   if not found_daft and not found_myHome:
@@ -80,12 +80,14 @@ def notify(dwelling_id, title, url):
         'HTMLPart': '<h3>New dwelling for rent</h3>' +
                     '<p>Title: ' + title + '</p>' +
                     '<p>Link: <a href=' + url + '>' + url + '</a></p>',
-        'CustomID': dwelling_id
+        'CustomID': str(dwelling_id)
       }
     ]
   }
-  mailjet.send.create(data=data)
-  print('Notification Email Sent.')
+  result = mailjet.send.create(data=data)
+  print('Attempting to send notification, Status Code: {}'.format(result.status_code))
+  print('Request:')
+  print(result.json())
 
 while True:
   # Links for each daft dwellings are formatted like this:
