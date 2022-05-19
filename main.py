@@ -110,7 +110,6 @@ while True:
       print('\nCould not connect to: ', search_url)
 
     for elem in dwellings:
-      print('\nElem:', elem)
       if 'daft.ie' in search_url:
         url = 'https://daft.ie' + elem
         elem = elem.split('/')
