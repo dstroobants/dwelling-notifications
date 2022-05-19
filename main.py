@@ -68,7 +68,7 @@ def notify(dwelling_id, title, url):
       {
         'From': {
           'Email': os.environ['EMAIL_SENDER'],
-          'Name': os.environ['']
+          'Name': os.environ['NAME_SENDER']
         },
         'To': [
           {
